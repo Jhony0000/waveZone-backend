@@ -25,7 +25,9 @@ import blogRouter from './routes/blog.routs.js'
 import notificationRouter from './routes/notifications.routes.js';
 
 //  reguller user 
-app.use('/api/v1/users' , userRouter)
+app.use('/api/v1/users' , function(){
+    userRouter
+} )
 app.use('/api/v1/videos',videoRouter)
 app.use('/api/v1/message',messageRouter)
 app.use('/api/v1/blog',blogRouter)
