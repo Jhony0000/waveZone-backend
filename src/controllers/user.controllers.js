@@ -580,7 +580,7 @@ export {
   refreshAccessToke,
   updateCoverImg ,
   updateAvatar ,
-  accountDetalsUpdate ,
+  accountDetailsUpdate ,
   updatePassword  ,
   deleteAccount ,
   getUserProfail,
