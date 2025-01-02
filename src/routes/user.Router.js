@@ -14,6 +14,7 @@ import {
     getUserProfail,
     search,
 } from '../controllers/user.controllers.js';
+import {veryfyJwt} from '../middlewares/auth.middelwers.js'
 
 const userRouter = Router();
 
