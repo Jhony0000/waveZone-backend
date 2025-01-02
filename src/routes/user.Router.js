@@ -1,7 +1,6 @@
 import { Router } from "express";
 import {upload} from '../middlewares/multer.middlewere.js'
-import {
-    // registerUser,
+import {registerUser,
     loginUser,
     logOutUser,
      getCurrentUser,
@@ -15,10 +14,24 @@ import {
        search,
         } from '../controllers/user.controllers.js'
        import {veryfyJwt} from '../middlewares/auth.middelwers.js'
-
+       console.log('registerUser:', typeof registerUser); // Should log 'function'
+       console.log('upload:', typeof upload);            // Should log 'object'
+       
 const userRouter = Router(); 
 
-// userRouter.route('/register').post(registerUser)
+userRouter.route('/register').post(function () {
+    upload.fields([
+        {
+            name : 'avatar',
+            maxCount : 1
+        },
+        {
+            name : 'coverImg',
+            maxCount : 1
+        }
+    ]),
+    registerUser 
+})
 
 userRouter.route('/login').post(loginUser)
 
