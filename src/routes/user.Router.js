@@ -17,9 +17,9 @@ import {
 
 const userRouter = Router();
 
-userRouter.post('/register',
+userRouter.post('/register',function(req, res){
     registerUser
-);
+});
 
 
 userRouter.route('/login').post(loginUser)
