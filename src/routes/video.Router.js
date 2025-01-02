@@ -8,17 +8,17 @@ import { deleteVideo, getUserVideo, updateVideo, uplodVideo,getMixedFeed, update
 
 const videoRouter = Router()
 
-videoRouter.route('/uplod-video').post(veryfyJwt,upload.single('videoFile'),uplodVideo)
-videoRouter.route('/update-video').post(veryfyJwt,updateVideo)
-videoRouter.route('/delete-video').delete(veryfyJwt,deleteVideo)
-videoRouter.route('/getUserAll-video').get(veryfyJwt,getUserVideo)
-videoRouter.route('/video-feed').get(veryfyJwt,getMixedFeed)
-videoRouter.route('/update-video-view').post(veryfyJwt,updateView)
-videoRouter.route('/user-video-search').post(veryfyJwt,searchUserVideo)
+videoRouter.post('/uplod-video',function(req,res){ veryfyJwt,upload.single('videoFile'),uplodVideo})
+videoRouter.post('/update-video',function(req,res){ veryfyJwt,updateVideo})
+videoRouter.delete('/delete-video',function(req,res){ veryfyJwt,deleteVideo})
+videoRouter.get('/getUserAll-video',function(req,res){ veryfyJwt,getUserVideo})
+videoRouter.get('/video-feed',function(req,res){ veryfyJwt,getMixedFeed})
+videoRouter.post('/update-video-view',function(req,res){ veryfyJwt,updateView})
+videoRouter.post('/user-video-search',function(req,res){ veryfyJwt,searchUserVideo})
 // videoRouter.route('/video-comment').post(veryfyJwt,videoComment)
-videoRouter.route('/get-all-vide-comments').post(veryfyJwt,getVideoComments)
-videoRouter.route('/get-video').post(veryfyJwt,getVideo);
-videoRouter.route('/delete-all-user-Video/:userId').delete(veryfyJwt,deleteUserAllVideo);
+videoRouter.post('/get-all-vide-comments',function(req,res){ veryfyJwt,getVideoComments})
+videoRouter.post('/get-video',function(req,res){ veryfyJwt,getVideo});
+videoRouter.delete('/delete-all-user-Video/:userId',function(req,res){ veryfyJwt,deleteUserAllVideo});
 
 
 export default videoRouter
