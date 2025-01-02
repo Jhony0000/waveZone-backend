@@ -289,7 +289,7 @@ const updateAvatar = asynchandeler(async(req,res) => {
      .json(new apiResponse(200,user,'user avatar update successfully'))
 })
 
-const accountDetalsUpdate = asynchandeler(async(req,res) => {
+const accountDetailsUpdate = asynchandeler(async(req,res) => {
    const {FulName,userName,email} = req.body
 
    const user = await User.findByIdAndUpdate(
@@ -342,7 +342,7 @@ const deleteAccount = asynchandeler(async (req, res) => {
     }
 });
 
-const getUserProfail = asynchandeler(async (req, res) => {
+const getUserProfile = asynchandeler(async (req, res) => {
   const { id, loggedInUserId } = req.body; // Pass both the profile user ID and logged-in user ID
 
   if (!id) {
