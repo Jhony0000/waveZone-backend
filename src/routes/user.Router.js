@@ -9,7 +9,7 @@ import {
     updateCoverImg,
     updatePassword,
     accountDetailsUpdate, // Fixed ty
-    refreshAccessToken,   // Fixed typo
+    // refreshAccessToken,   // Fixed typo
     deleteAccount,
     getUserProfile,       // Fixed typo
     search,
@@ -33,7 +33,7 @@ userRouter.route('/logout').post(verifyJwt, logOutUser);
 userRouter.route('/current-user').get(verifyJwt, getCurrentUser);
 userRouter.route('/get-user-profile').post(verifyJwt, getUserProfile); // Fixed typo
 userRouter.route('/change-password').post(verifyJwt, updatePassword); // Fixed typo
-userRouter.route('/refresh-access-token').post(verifyJwt, refreshAccessToken); // Fixed typo
+// userRouter.route('/refresh-access-token').post(verifyJwt, refreshAccessToken); // Fixed typo
 
 userRouter.route('/user-search').post(verifyJwt, search);
 
