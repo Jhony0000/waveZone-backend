@@ -1,58 +1,46 @@
 import { Router } from "express";
-import {upload} from '../middlewares/multer.middlewere.js'
-import {registerUser,
+import { upload } from '../middlewares/multer.middlewere.js';
+import {
+    registerUser,
     loginUser,
     logOutUser,
-     getCurrentUser,
-     updateAvatar,
-     updateCoverImg,
-     updatePassword,
-     accountDetalsUpdate,
-     refreshAccessToke,
-      deleteAccount,
-       getUserProfail,
-       search,
-        } from '../controllers/user.controllers.js'
-       import {veryfyJwt} from '../middlewares/auth.middelwers.js'
+    getCurrentUser,
+    updateAvatar,
+    updateCoverImg,
+    updatePassword,
+    accountDetailsUpdate, // Fixed typo
+    refreshAccessToken,   // Fixed typo
+    deleteAccount,
+    getUserProfile,       // Fixed typo
+    search,
+} from '../controllers/user.controllers.js';
+import { verifyJwt } from '../middlewares/auth.middelwers.js'; // Fixed typo
 
-const userRouter = Router(); 
+const userRouter = Router();
 
 userRouter.route('/register').post(
     upload.fields([
-        {
-            name : 'avatar',
-            maxCount : 1
-        },
-        {
-            name : 'coverImg',
-            maxCount : 1
-        }
+        { name: 'avatar', maxCount: 1 },
+        { name: 'coverImg', maxCount: 1 }
     ]),
-    registerUser 
- 
-)
+    registerUser
+);
 
-userRouter.route('/login').post(loginUser)
+userRouter.route('/login').post(loginUser);
 
-// SECURE ROUT
-userRouter.route('/logout').post(veryfyJwt,logOutUser)
-userRouter.route('/current-user').get(veryfyJwt,getCurrentUser);
-userRouter.route('/get-user-profail').post(veryfyJwt,getUserProfail);
-userRouter.route('/changed-Password').post(veryfyJwt,updatePassword)
-userRouter.route('/refresh-access-token').post(veryfyJwt,refreshAccessToke)
+// SECURE ROUTES
+userRouter.route('/logout').post(verifyJwt, logOutUser);
+userRouter.route('/current-user').get(verifyJwt, getCurrentUser);
+userRouter.route('/get-user-profile').post(verifyJwt, getUserProfile); // Fixed typo
+userRouter.route('/change-password').post(verifyJwt, updatePassword); // Fixed typo
+userRouter.route('/refresh-access-token').post(verifyJwt, refreshAccessToken); // Fixed typo
 
+userRouter.route('/user-search').post(verifyJwt, search);
 
-// userRouter.route('/user-follow').post(veryfyJwt,userFollow)
-userRouter.route('/user-search').post(veryfyJwt,search)
+userRouter.route('/avatar').post(verifyJwt, upload.single("avatar"), updateAvatar);
+userRouter.route('/coverImg').post(verifyJwt, upload.single("coverImg"), updateCoverImg);
 
-
-userRouter.route('/avatar').post(veryfyJwt,upload.single("avatar"),updateAvatar)
-userRouter.route('/coverImg').post(veryfyJwt,upload.single("coverImg"),updateCoverImg)
- 
-
-userRouter.route('/update-account').post(veryfyJwt,accountDetalsUpdate)
-userRouter.route('/delete-account').get(veryfyJwt,deleteAccount)
-
+userRouter.route('/update-account').post(verifyJwt, accountDetailsUpdate); // Fixed typo
+userRouter.route('/delete-account').get(verifyJwt, deleteAccount);
 
 export default userRouter;
-
