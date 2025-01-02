@@ -1,7 +1,7 @@
 import { Router } from "express";
 import {upload} from '../middlewares/multer.middlewere.js'
 import {
-    // registerUser,
+    registerUser,
     loginUser,
     logOutUser,
      getCurrentUser,
@@ -18,20 +18,20 @@ import {
 
 const userRouter = Router(); 
 
-// userRouter.route('/register').post(
-//     upload.fields([
-//         {
-//             name : 'avatar',
-//             maxCount : 1
-//         },
-//         {
-//             name : 'coverImg',
-//             maxCount : 1
-//         }
-//     ]),
-//     registerUser 
+userRouter.route('/register').post(
+    upload.fields([
+        {
+            name : 'avatar',
+            maxCount : 1
+        },
+        {
+            name : 'coverImg',
+            maxCount : 1
+        }
+    ]),
+    registerUser 
  
-// )
+)
 
 userRouter.route('/login').post(loginUser)
 
