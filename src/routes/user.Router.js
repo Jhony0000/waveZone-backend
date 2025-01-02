@@ -36,12 +36,12 @@ userRouter.post('/refresh-access-token',veryfyJwt,function(req,res){ refreshAcce
 userRouter.post('/user-search',veryfyJwt,function(req,res){ search});
 
 
-userRouter.post('/avatar',veryfyJwt,function(req,res){ upload.single("avatar"),updateAvatar})
-userRouter.post('/coverImg',veryfyJwt,function(req,res) {upload.single("coverImg"),updateCoverImg})
+userRouter.post('/avatar',veryfyJwt,function(req,res){ upload.single("avatar"),updateAvatar});
+userRouter.post('/coverImg',veryfyJwt,function(req,res) {upload.single("coverImg"),updateCoverImg});
  
 
-userRouter.route('/update-account').post(veryfyJwt,accountDetalsUpdate)
-userRouter.route('/delete-account').get(veryfyJwt,deleteAccount)
+userRouter.post('/update-account',veryfyJwt,function(req,res){ accountDetalsUpdate});
+userRouter.get('/delete-account',veryfyJwt,function(req,res){ deleteAccount});
 
 
 export default userRouter;
