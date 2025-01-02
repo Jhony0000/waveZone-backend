@@ -8,7 +8,7 @@ import {
     updateAvatar,
     updateCoverImg,
     updatePassword,
-    accountDetailsUpdate, // Fixed typo
+    accountDetailsUpdate, // Fixed ty
     refreshAccessToken,   // Fixed typo
     deleteAccount,
     getUserProfile,       // Fixed typo
