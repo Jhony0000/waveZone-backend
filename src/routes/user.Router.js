@@ -18,7 +18,7 @@ import { verifyJwt } from '../middlewares/auth.middelwers.js'; // Fixed typo
 
 const userRouter = Router();
 
-userRouter.route('/register').post(
+userRouter.route('/register').get(
     upload.fields([
         { name: 'avatar', maxCount: 1 },
         { name: 'coverImg', maxCount: 1 }
@@ -26,7 +26,7 @@ userRouter.route('/register').post(
     registerUser
 );
 
-userRouter.route('/login').post(loginUser);
+userRouter.route('/login').get(loginUser);
 
 // SECURE ROUTES
 userRouter.route('/logout').post(verifyJwt, logOutUser);
