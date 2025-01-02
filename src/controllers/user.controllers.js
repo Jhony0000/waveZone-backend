@@ -583,7 +583,7 @@ export {
   accountDetailsUpdate ,
   updatePassword  ,
   deleteAccount ,
-  getUserProfail,
+  getUserProfile,
   // userFollow,
   search
 };
