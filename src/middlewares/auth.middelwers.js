@@ -3,7 +3,7 @@ import {apiError} from '../utils/apiErorr.js'
 import jwt from 'jsonwebtoken'
 import {User} from '../models/users.models.js'
 
-export const veryfyJwt = asynchandeler(async(req,_,next) => {
+export const verifyJwt = asynchandeler(async(req,_,next) => {
    try {
       const token = req.cookies?.accessToken || req.header('Authorization')?.replace('Bearer ',"")
       //  console.log('token',token)
