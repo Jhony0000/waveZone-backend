@@ -20,18 +20,13 @@ const userRouter = Router();
 
 userRouter.route('/register').post(
     upload.fields([
-        {
-            name : 'avatar',
-            maxCount : 1
-        },
-        {
-            name : 'coverImg',
-            maxCount : 1
-        }
+        { name: 'avatar', maxCount: 1 },
+        { name: 'coverImg', maxCount: 1 }
     ]),
-    registerUser 
- 
-)
+    (req, res) => {
+        res.send('Test route working');
+    }
+);
 
 userRouter.route('/login').post(loginUser)
 
