@@ -22,22 +22,22 @@ userRouter.post('/register',function(req, res){
 });
 
 
-userRouter.route('/login').post(loginUser)
+userRouter.post('/login', function(req,res){loginUser});
 
 // SECURE ROUT
-userRouter.route('/logout').post(veryfyJwt,logOutUser)
-userRouter.route('/current-user').get(veryfyJwt,getCurrentUser);
-userRouter.route('/get-user-profail').post(veryfyJwt,getUserProfail);
-userRouter.route('/changed-Password').post(veryfyJwt,updatePassword)
-userRouter.route('/refresh-access-token').post(veryfyJwt,refreshAccessToke)
+userRouter.post('/logout',  veryfyJwt , function(req,res){logOutUser} );
+userRouter.get('/current-user', veryfyJwt, function(req,res){ getCurrentUser});
+userRouter.post('/get-user-profail',veryfyJwt,function(req,res){ getUserProfail});
+userRouter.post('/changed-Password',veryfyJwt, function(req,res){ updatePassword});
+userRouter.post('/refresh-access-token',veryfyJwt,function(req,res){ refreshAccessToke});
 
 
 // userRouter.route('/user-follow').post(veryfyJwt,userFollow)
-userRouter.route('/user-search').post(veryfyJwt,search)
+userRouter.post('/user-search',veryfyJwt,function(req,res){ search});
 
 
-userRouter.route('/avatar').post(veryfyJwt,upload.single("avatar"),updateAvatar)
-userRouter.route('/coverImg').post(veryfyJwt,upload.single("coverImg"),updateCoverImg)
+userRouter.post('/avatar',veryfyJwt,function(req,res){ upload.single("avatar"),updateAvatar})
+userRouter.post('/coverImg',veryfyJwt,function(req,res) {upload.single("coverImg"),updateCoverImg})
  
 
 userRouter.route('/update-account').post(veryfyJwt,accountDetalsUpdate)
