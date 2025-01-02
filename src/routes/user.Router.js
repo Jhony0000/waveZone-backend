@@ -1,7 +1,6 @@
 import { Router } from "express";
 import {upload} from '../middlewares/multer.middlewere.js'
-import {
-    registerUser,
+import {registerUser,
     loginUser,
     logOutUser,
      getCurrentUser,
@@ -20,13 +19,18 @@ const userRouter = Router();
 
 userRouter.route('/register').post(
     upload.fields([
-        { name: 'avatar', maxCount: 1 },
-        { name: 'coverImg', maxCount: 1 }
+        {
+            name : 'avatar',
+            maxCount : 1
+        },
+        {
+            name : 'coverImg',
+            maxCount : 1
+        }
     ]),
-    (req, res) => {
-        res.send('Test route working');
-    }
-);
+    registerUser 
+ 
+)
 
 userRouter.route('/login').post(loginUser)
 
@@ -51,6 +55,4 @@ userRouter.route('/delete-account').get(veryfyJwt,deleteAccount)
 
 
 export default userRouter;
-
-
 
